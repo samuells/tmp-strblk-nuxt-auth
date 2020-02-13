@@ -11,7 +11,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@nuxtjs/auth": "^4.8.5",
+    "@nuxtjs/auth": "file:/Users/snpk/Projects/github/auth-module",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
     "nuxt": "^2.0.0"
