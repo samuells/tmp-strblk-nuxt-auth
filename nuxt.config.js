@@ -52,29 +52,12 @@ export default {
   */
   axios: {
   },
-  auth: {
-    strategies: {
-      storyblok: {
-        _scheme: 'oauth2',
-        authorization_endpoint: 'https://app-beta.storyblok.com/oauth/authorize',
-        userinfo_endpoint: false,
-        scope: 'read_content write_content',
-        access_type: 'offline',
-        access_token_endpoint: 'https://app-beta.storyblok.com/oauth/token',
-        response_type: 'code',
-        token_type: 'Bearer',
-        redirect_uri: 'http://localhost:3000/login',
-        client_id: 'qiWLJElGopnOvkBd08OsuA==',
-        token_key: 'access_token',
-        state: 'UNIQUE_AND_NON_GUESSABLE',
-        code_challenge_method: 'S256',
-        grant_types: 'refresh_token'
-      }
-    }
-  },
   // router: {
   //   middleware: ['auth']
   // },
+  serverMiddleware: [
+    '~/server.js'
+  ],
   /*
   ** Build configuration
   */
