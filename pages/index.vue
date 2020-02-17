@@ -5,41 +5,43 @@
       <h1 class="title">
         storyblok-nuxt-auth
       </h1>
-      <h2 v-if="$auth.loggedIn" class="subtitle">
-        💚 You are logged in! 💚
-      </h2>
-      <h2 v-else class="subtitle">
-        😭 Not logged in! 😭
-      </h2>
-      <div class="links">
-        <button
-          class="button--green"
-          @click.prevent="$auth.loginWith('storyblok')"
-          >
-          Login
-        </button>
-      </div>
+      {{stories}}
     </div>
   </div>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
+import axios from 'axios'
 
 export default {
-  auth: 'guest',
   components: {
     Logo
+  },
+  data() {
+    return {
+      stories: []
+    }
+  },
+  mounted() {
+    if (window.top == window.self) {
+      window.location.assign('https://app.storyblok.com/oauth/app_redirect')
+    } else {
+      this.loadStories()
+    }
+  },
+  methods: {
+    loadStories() {
+      axios.get(`/auth/explore/${this.$route.query.space_id}/stories`)
+        .then((res) => {
+          this.stories = res.data.stories
+        })
+    }
   }
 }
 </script>
 
 <style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-  @apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
 .container {
   margin: 0 auto;
   min-height: 100vh;

@@ -43,8 +43,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv',
-    '@nuxtjs/auth'
+    '@nuxtjs/dotenv'
   ],
   /*
   ** Axios module configuration
@@ -52,29 +51,12 @@ export default {
   */
   axios: {
   },
-  auth: {
-    strategies: {
-      storyblok: {
-        _scheme: 'oauth2',
-        authorization_endpoint: 'https://app-beta.storyblok.com/oauth/authorize',
-        userinfo_endpoint: false,
-        scope: ['read_content'],
-        access_type: 'offline',
-        access_token_endpoint: 'https://app-beta.storyblok.com/oauth/token',
-        response_type: 'code',
-        token_type: 'Bearer',
-        redirect_uri: 'http://localhost:3000/',
-        client_id: 'LyYe+IRf/si+dNRRS5/hGQ==',
-        client_secret: 'l1MF7ww6WL8+/nQjoxm4fUfhZApZ6QzbRMq5P3DMN8X/q4d7QryzSNSHdG+UZcSxVpAcvGm6ZxYEHnMUPtoYQQ==',
-        token_key: 'access_token',
-        state: 'UNIQUE_AND_NON_GUESSABLE',
-        code_chalenge_method: 'S256'
-      }
-    }
-  },
   // router: {
   //   middleware: ['auth']
   // },
+  serverMiddleware: [
+    '~/server.js'
+  ],
   /*
   ** Build configuration
   */
